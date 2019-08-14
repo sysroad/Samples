@@ -10,19 +10,15 @@ public class SQLSnappy
 {
     public static SqlBinary Compress(SqlString srcText)
     {
-        MemoryStream ms = null;
-
         try
         {
-            ms = new MemoryStream();
-
-            using (var ss = new SnappyStream(ms, CompressionMode.Compress))
+            using (var ms = new MemoryStream())
+            using (var ss = new SnappyStream(ms, CompressionMode.Compress, true))
             {
-                ms = null;
-
                 var srcBytes = Encoding.UTF8.GetBytes(srcText.Value);
                 ss.Write(srcBytes, 0, srcBytes.Length);
                 ss.Flush();
+
                 return ms.ToArray();
             }
         }
@@ -30,27 +26,18 @@ public class SQLSnappy
         {
             return SqlBinary.Null;
         }
-        finally
-        {
-            ms?.Dispose();
-        }
     }
 
     public static SqlString Decompress(SqlBinary srcBinary)
     {
-        MemoryStream ms = null;
-
         try
         {
-            ms = new MemoryStream();
-
-            ms.Write(srcBinary.Value, 0, srcBinary.Length);
-            ms.Flush();
-            ms.Seek(0, SeekOrigin.Begin);
-
-            using (var ss = new SnappyStream(ms, CompressionMode.Decompress))
+            using (var ms = new MemoryStream())
+            using (var ss = new SnappyStream(ms, CompressionMode.Decompress, true))
             {
-                ms = null;
+                ms.Write(srcBinary.Value, 0, srcBinary.Length);
+                ms.Flush();
+                ms.Seek(0, SeekOrigin.Begin);
 
                 var decompress = new List<byte>(srcBinary.Length * 2);
                 var buffer = new byte[1024];
@@ -74,10 +61,6 @@ public class SQLSnappy
         catch (Exception e)
         {
             return e.Message;
-        }
-        finally
-        {
-            ms?.Dispose();
         }
     }
 }
