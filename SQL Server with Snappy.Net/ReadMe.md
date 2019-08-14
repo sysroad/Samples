@@ -57,6 +57,12 @@ create assembly [Decompress]
 from 'C:\MSSQL DLL\SQLSnappy.dll'
 with permission_set = unsafe
 
+create function [fnCompress](@value nvarchar(max))
+returns varbinary(max)
+as
+external name SQLSnappy.Snappy.Compress
+go
+
 create function [fnDecompress](@value varbinary(max))
 returns nvarchar(max)
 as
