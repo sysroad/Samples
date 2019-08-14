@@ -12,7 +12,7 @@ Sources are available via Bitbucket repository.
 ```
 
 다음 Snappy.Net 는 https://github.com/robertvazan/snappy.net.git  여기서 소스를 받으면 되고  
-프로젝트 홈페이지는 https://snappy.machinezoo.com/ 다.
+프로젝트 홈페이지는 https://snappy.machinezoo.com/ 다.  
 빌드에 필요한 native dll 은 다음 부분에서 다운 받을 수 있다.  
 ```
 Alternatively, you can download plain 7-Zip archive of the DLLs. 
