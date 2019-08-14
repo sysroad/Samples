@@ -72,3 +72,22 @@ as
 external name SQLSnappy.SQLSnappy.Decompress
 go
 ```
+
+### 테스트
+테스트용 테이블 작성  
+```
+create table testTb
+(
+    DataField varbinary(max)
+);
+```
+문자열 압축 저장  
+```
+insert into testTb (DataField)
+values (dbo.fnCompress('Hello World!'));
+```
+조회해 보기  
+```
+select * from testTb;
+select dbo.fnDecompress(DataField) from testTb;
+```
