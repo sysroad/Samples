@@ -7,8 +7,8 @@
     <ProjectGuid>{A82D0682-466E-43AD-BB92-23195334B4BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SQL_Server_with_Snappy.Net</RootNamespace>
-    <AssemblyName>SQL Server with Snappy.Net</AssemblyName>
+    <RootNamespace>SQLSnappy</RootNamespace>
+    <AssemblyName>SQLSnappy</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Crc32C.NET">
+      <HintPath>.\Crc32C.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Snappy.NET">
+      <HintPath>.\Snappy.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
