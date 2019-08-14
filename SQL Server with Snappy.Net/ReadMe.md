@@ -48,24 +48,27 @@ go
 create assembly [Crc32C.NET]
 from 'C:\MSSQL DLL\Crc32C.NET.dll'
 with permission_set = unsafe
+go
 
 create assembly [Snappy.NET]
 from 'C:\MSSQL DLL\Snappy.NET.dll'
 with permission_set = unsafe
+go
 
-create assembly [Decompress]
+create assembly [SQLSnappy]
 from 'C:\MSSQL DLL\SQLSnappy.dll'
 with permission_set = unsafe
+go
 
 create function [fnCompress](@value nvarchar(max))
 returns varbinary(max)
 as
-external name SQLSnappy.Snappy.Compress
+external name SQLSnappy.SQLSnappy.Compress
 go
 
 create function [fnDecompress](@value varbinary(max))
 returns nvarchar(max)
 as
-external name SQLSnappy.Snappy.Decompress
+external name SQLSnappy.SQLSnappy.Decompress
 go
 ```
