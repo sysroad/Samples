@@ -47,7 +47,15 @@ public class SQLSnappy
                     var nRead = ss.Read(buffer, 0, buffer.Length);
                     if (nRead > 0)
                     {
-                        decompress.AddRange(new ArraySegment<byte>(buffer, 0, nRead));
+                        if (nRead == buffer.Length)
+                        {
+                            // value-type array is iterated without boxing (compiler support)
+                            decompress.AddRange(buffer);
+                        }
+                        else
+                        {
+                            decompress.AddRange(new ArraySegment<byte>(buffer, 0, nRead));
+                        }
                     }
                     else
                     {
