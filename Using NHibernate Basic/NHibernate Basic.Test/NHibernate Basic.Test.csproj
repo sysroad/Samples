@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>NHibernateBasic.Domain</RootNamespace>
+    <RootNamespace>NHibernateBasic.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
