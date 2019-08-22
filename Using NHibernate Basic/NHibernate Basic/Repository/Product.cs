@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NHibernate.Criterion;
 using NHibernateBasic.Domain;
 
 namespace NHibernateBasic.Repository
@@ -28,27 +29,52 @@ namespace NHibernateBasic.Repository
 
         public ICollection<Product> GetByCategory(string productCategory)
         {
-            throw new NotImplementedException();
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var products = session.CreateCriteria<Product>()
+                                      .Add(Restrictions.Eq("Category", productCategory))
+                                      .List<Product>();
+                return products;
+            }
         }
 
         public Product GetById(Guid productId)
         {
-            throw new NotImplementedException();
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                return session.Get<Product>(productId);
+            }
         }
 
         public Product GetByName(string productName)
         {
-            throw new NotImplementedException();
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var product = session.CreateCriteria<Product>()
+                                     .Add(Restrictions.Eq("Name", productName))
+                                     .UniqueResult<Product>();
+                return product;
+            }
         }
 
         public void Remove(Product product)
         {
-            throw new NotImplementedException();
+            using (var session = NHibernateHelper.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Delete(product);
+                transaction.Commit();
+            }
         }
 
         public void Update(Product product)
         {
-            throw new NotImplementedException();
+            using (var session = NHibernateHelper.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Update(product);
+                transaction.Commit();
+            }
         }
     }
 }
