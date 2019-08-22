@@ -1,9 +1,12 @@
 ### https://nhibernate.info/doc/tutorials/first-nh-app/your-first-nhibernate-based-application.html  
   
- 1. NHibernate ¼³Ä¡  
- 2. Business object class Á¤ÀÇ  
- 3. NHibernate mapping »ı¼º (save & load business object)  
- 4. NHibernate ¿Í database ¿¬°á ¼³Á¤  
- 5. Database ÀÚµ¿ »ı¼º  
- 6. Repository ÆĞÅÏÀ» »ç¿ëÇÑ CRUD ÄÚµå ÀÛ¼º  
- 7. À¯´ÖÅ×½ºÆ® »ç¿ëÇÏ±â  
+ 1. NHibernate ì„¤ì¹˜  
+ 2. Business object class ì •ì˜  
+ 3. NHibernate mapping ìƒì„± (save & load business object)  
+ 4. NHibernate ì™€ database ì—°ê²° ì„¤ì •  
+ 5. Database ìë™ ìƒì„±  
+ 6. Repository íŒ¨í„´ì„ ì‚¬ìš©í•œ CRUD ì½”ë“œ ì‘ì„±  
+ 7. ìœ ë‹›í…ŒìŠ¤íŠ¸ ì‚¬ìš©í•˜ê¸°  
+
+- sqlserver ce ëŒ€ì‹  sqlite ë¥¼ ì‚¬ìš©í–ˆë‹¤. (sqlserver ce ëŠ” ë”ì´ìƒ ì§€ì›ë˜ì§€ ì•ŠëŠ”ë‹¤)  
+- [TestFixtureSetUp] attribute ëŠ” [OneTimeSetUp] ìœ¼ë¡œ ëŒ€ì²´ë˜ì—ˆë‹¤.
