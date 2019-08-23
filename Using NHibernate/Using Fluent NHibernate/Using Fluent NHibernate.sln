@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Using Fluent NHibernate", "Using Fluent NHibernate\Using Fluent NHibernate.csproj", "{45BF4F88-56C1-4FD6-A8E0-A81B952B97C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Using Fluent NHibernate.Test", "Using Fluent NHibernate.Test\Using Fluent NHibernate.Test.csproj", "{71937972-5070-40E3-8A7C-2F1DB041B782}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0BACB9BD-8B5B-42E3-B673-A95422335F34}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45BF4F88-56C1-4FD6-A8E0-A81B952B97C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BF4F88-56C1-4FD6-A8E0-A81B952B97C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BF4F88-56C1-4FD6-A8E0-A81B952B97C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BF4F88-56C1-4FD6-A8E0-A81B952B97C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71937972-5070-40E3-8A7C-2F1DB041B782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71937972-5070-40E3-8A7C-2F1DB041B782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71937972-5070-40E3-8A7C-2F1DB041B782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71937972-5070-40E3-8A7C-2F1DB041B782}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28F94098-B532-4C78-9013-4579943CF7BB}
+	EndGlobalSection
+EndGlobal
