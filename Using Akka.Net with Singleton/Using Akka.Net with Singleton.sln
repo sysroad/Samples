@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Net with Singleton", "Akka.Net with Singleton\Akka.Net with Singleton.csproj", "{412BC86E-FBF7-49F2-B82C-4DBF36C15BD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Net with Singleton.Test", "Akka.Net with Singleton.Test\Akka.Net with Singleton.Test.csproj", "{D05DB4A5-42B6-422F-9CBE-19384D2468BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{412BC86E-FBF7-49F2-B82C-4DBF36C15BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412BC86E-FBF7-49F2-B82C-4DBF36C15BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412BC86E-FBF7-49F2-B82C-4DBF36C15BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412BC86E-FBF7-49F2-B82C-4DBF36C15BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D05DB4A5-42B6-422F-9CBE-19384D2468BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D05DB4A5-42B6-422F-9CBE-19384D2468BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D05DB4A5-42B6-422F-9CBE-19384D2468BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D05DB4A5-42B6-422F-9CBE-19384D2468BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26634C7D-E14B-409D-9078-45F2FC239594}
+	EndGlobalSection
+EndGlobal
