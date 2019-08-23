@@ -1,7 +1,9 @@
 ### https://github.com/FluentNHibernate/fluent-nhibernate/wiki/Getting-started
 
-- FluentNH ´Â NH ÀÇ Ç¥ÁØ ¸ÅÇÎ ÆÄÀÏ (.hbm.xml) À» C# ÄÚµå·Î ´ëÃ¼ÇÑ´Ù.  
-- C# ÄÚµå »ç¿ëÀÇ ÀåÁ¡  
-  - XML ÀÇ º¹Àâ½º·¯¿ò¿¡¼­ Å»Ãâ  
-  - ¸®ÆÑÅä¸µÀÌ ¿ëÀÌÇØÁü  
-  - ¸ÅÇÎÁ¤º¸ ¿ä·ù¸¦ ÄÄÆÄÀÏ Å¸ÀÓ¿¡ °¨Áö  
+- FluentNH ëŠ” NH ì˜ í‘œì¤€ ë§¤í•‘ íŒŒì¼ (.hbm.xml) ì„ C# ì½”ë“œë¡œ ëŒ€ì²´í•œë‹¤.  
+- C# ì½”ë“œ ì‚¬ìš©ì˜ ì¥ì   
+  - XML ì˜ ë³µì¡ìŠ¤ëŸ¬ì›€ì—ì„œ íƒˆì¶œ  
+  - ë¦¬íŒ©í† ë§ì´ ìš©ì´í•´ì§  
+  - ë§¤í•‘ì •ë³´ ìš”ë¥˜ë¥¼ ì»´íŒŒì¼ íƒ€ì„ì— ê°ì§€  
+- Mapping í´ë˜ìŠ¤ë“¤ì€ MappingSet partial class ë¥¼ í•˜ë‚˜ ë§Œë“¤ì–´ í•œë° ë¬¶ì—ˆë‹¤.  
+  .Mappings(m => m.FluentMappings.AddFromAssemblyOf<MappingSet>()) ë¡œ í•œë²ˆì— í˜¸ì¶œí•˜ê¸° ìœ„í•¨
