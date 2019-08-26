@@ -20,7 +20,6 @@ namespace UsingFluentNHibernate.Entities
             product.StoresStokedIn.Add(this);
             Products.Add(product);
         }
-
         public virtual void AddEmployee(Employee employee)
         {
             employee.Store = this;
