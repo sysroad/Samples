@@ -1,0 +1,11 @@
+syntax="proto3";
+
+import "data.proto";
+import "client.proto";
+
+package Message;
+option csharp_namespace="App.Message";
+
+message ServerMessage {
+	Data.SampleData data = 1;
+}
