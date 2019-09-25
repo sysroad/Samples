@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using NHibernate;
+using NHibernate.Criterion;
 using NHibernate.Tool.hbm2ddl;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -105,6 +106,8 @@ namespace UsingFluentNHibernate.Test
                     }
                 }
             }
+
+            var st = GetStore("SuperMart");
         }
 
         void AddProductsToStore(Store store, params Product[] products)
@@ -120,6 +123,23 @@ namespace UsingFluentNHibernate.Test
             foreach (var employee in employees)
             {
                 store.AddEmployee(employee);
+            }
+        }
+
+        Store GetStore(string name)
+        {
+            using (var session = sessionFactory.OpenSession())
+            {
+                var cret = session.CreateCriteria<Store>()
+                                   .Add(Restrictions.Eq("Name", name));
+                var store = cret.UniqueResult<Store>();
+
+                if (store != null)
+                {
+                    var p = store.Products.Where(x => x.Name == "Bread").FirstOrDefault();
+                }
+
+                return store;
             }
         }
 
