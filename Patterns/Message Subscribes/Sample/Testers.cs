@@ -17,12 +17,23 @@ namespace Sample
             Lib.MessageManager.Instance.RegisterID(ID, this);
 
             Subscribe(Msg.TestMessage.Descriptor.FullName, RecvTestMsg);
+
+            if (ID % 2 == 0) // id 가 짝수면 하나 더 등록
+            {
+                Subscribe(Msg.TestMessage2.Descriptor.FullName, RecvTestMsg2);
+            }
         }
 
         void RecvTestMsg(IMessage message)
         {
             var msg = (message as Msg.TestMessage);
-            Console.WriteLine($"recv msg : tester id ({ID}) : msg - {msg.Content}");
+            Console.WriteLine($"recv TestMessage : tester id ({ID}) : msg - {msg.Content}");
+        }
+
+        void RecvTestMsg2(IMessage message)
+        {
+            var msg = (message as Msg.TestMessage2);
+            Console.WriteLine($"recv TestMessage2 : tester id ({ID}) : msg - {msg.Content}");
         }
 
         public override void Dispatcher(IMessage message)

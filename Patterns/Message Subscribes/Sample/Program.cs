@@ -10,7 +10,7 @@ namespace Sample
         {
             List<Tester> testers = new List<Tester>();
 
-            for (int i = 0; i < 4; ++i)
+            for (int i = 0; i <= 10; ++i)
             {
                 testers.Add(new Tester());
             }
@@ -19,8 +19,10 @@ namespace Sample
 
             var sender = testers.First();
 
-            Console.WriteLine($"send msg : tester id ({sender.ID})");
+            Console.WriteLine($"send TestMessage : tester id ({sender.ID})");
             sender.Send(new Msg.TestMessage { Content = "Hello World" });
+            Console.WriteLine($"send TestMessage2 : tester id ({sender.ID})");
+            sender.Send(new Msg.TestMessage2 { Content = "Hello World2" });
 
             Lib.MessageManager.Instance.Stop();
         }

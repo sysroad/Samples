@@ -6,3 +6,7 @@ option csharp_namespace="Sample.Msg";
 message TestMessage {
 	string content = 1;
 }
+
+message TestMessage2 {
+	string content = 1;
+}
