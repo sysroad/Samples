@@ -86,13 +86,20 @@ namespace Lib
 
         public void RegisterID(int id, ISubscriber sub)
         {
-            if (!Subscribers.ContainsKey(id))
+            if (id != AnonymouseID)
             {
-                Subscribers.TryAdd(id, sub);
+                if (!Subscribers.ContainsKey(id))
+                {
+                    Subscribers.TryAdd(id, sub);
+                }
+                else
+                {
+                    throw new ArgumentException($"key duplicated - {id}");
+                }
             }
             else
             {
-                throw new ArgumentException($"key duplicated - {id}");
+                throw new ArgumentException($"not allowed id - {id}");
             }
         }
 
