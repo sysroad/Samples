@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define Parallel_Dispatch
+
+using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -17,7 +19,11 @@ namespace Lib
     {
         public virtual int ID { get { return -1; } }
 
+#if Parallel_Dispatch
+        protected readonly ConcurrentDictionary<string, Action<IMessage>> handlers = new ConcurrentDictionary<string, Action<IMessage>>();
+#else
         protected readonly Dictionary<string, Action<IMessage>> handlers = new Dictionary<string, Action<IMessage>>();
+#endif
 
         public virtual void Dispatcher(IMessage message)
         {
@@ -31,7 +37,7 @@ namespace Lib
         public virtual void Subscribe(string msgId, Action<IMessage> handler)
         {
             MessageManager.Instance.Subscribe(ID, msgId);
-            handlers.Add(msgId, handler);
+            handlers.TryAdd(msgId, handler);
         }
 
         public virtual void Send(IMessage message)
@@ -49,9 +55,13 @@ namespace Lib
         }
 
         ConcurrentQueue<InternalMessage> MessageQ { get; } = new ConcurrentQueue<InternalMessage>();
+#if Parallel_Dispatch
+        ConcurrentDictionary<int, ISubscriber> Subscribers { get; } = new ConcurrentDictionary<int, ISubscriber>();
+        ConcurrentDictionary<string, List<int>> MsgSubscriptionMap { get; } = new ConcurrentDictionary<string, List<int>>();
+#else
         Dictionary<int, ISubscriber> Subscribers { get; } = new Dictionary<int, ISubscriber>();
         Dictionary<string, List<int>> MsgSubscriptionMap { get; } = new Dictionary<string, List<int>>();
-
+#endif
         readonly EventWaitHandle sendEvent = new EventWaitHandle(false, EventResetMode.AutoReset);
         CancellationTokenSource cts = null;
         Task msgProcTask = null;
@@ -76,7 +86,7 @@ namespace Lib
         {
             if (!Subscribers.ContainsKey(id))
             {
-                Subscribers.Add(id, sub);
+                Subscribers.TryAdd(id, sub);
             }
             else
             {
@@ -88,7 +98,7 @@ namespace Lib
         {
             if (!MsgSubscriptionMap.ContainsKey(messageId))
             {
-                MsgSubscriptionMap.Add(messageId, new List<int>());
+                MsgSubscriptionMap.TryAdd(messageId, new List<int>());
             }
 
             var sublist = MsgSubscriptionMap[messageId];
@@ -131,6 +141,24 @@ namespace Lib
                     }
 
                     var subIds = MsgSubscriptionMap[msgId];
+#if Parallel_Dispatch
+                    Parallel.ForEach(subIds, id =>
+                    {
+                        if (id == sender)
+                            return;
+                        if (Subscribers.ContainsKey(id) == false)
+                            return;
+
+                        try
+                        {
+                            Subscribers[id].Dispatcher(msg.Message);
+                        }
+                        catch
+                        {
+                            // log?
+                        }
+                    });
+#else
                     foreach (var id in subIds)
                     {
                         if (id != sender && Subscribers.ContainsKey(id))
@@ -145,6 +173,7 @@ namespace Lib
                             }
                         }
                     }
+#endif
                 }
             }
         }
