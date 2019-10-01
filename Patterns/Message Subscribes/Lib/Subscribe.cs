@@ -48,6 +48,8 @@ namespace Lib
 
     public class MessageManager : TSingle<MessageManager>
     {
+        const int AnonymouseID = int.MinValue;
+
         class InternalMessage
         {
             internal int Sender { get; set; }
@@ -121,6 +123,11 @@ namespace Lib
 
                 sendEvent.Set();
             }
+        }
+
+        public void Send(IMessage msg)
+        {
+            Send(AnonymouseID, msg);
         }
 
         void MsgProc()

@@ -24,6 +24,9 @@ namespace Sample
             Console.WriteLine($"send TestMessage2 : tester id ({sender.ID})");
             sender.Send(new Msg.TestMessage2 { Content = "Hello World2" });
 
+            Console.WriteLine($"send TestMessage : anonymous sender");
+            Lib.MessageManager.Instance.Send(new Msg.TestMessage { Content = "Who am I?" });
+
             Lib.MessageManager.Instance.Stop();
         }
     }
