@@ -19,7 +19,14 @@ namespace Lib
 
         protected readonly Dictionary<string, Action<IMessage>> handlers = new Dictionary<string, Action<IMessage>>();
 
-        public virtual void Dispatcher(IMessage message) { }
+        public virtual void Dispatcher(IMessage message)
+        {
+            var id = message.Descriptor.FullName;
+            if (handlers.ContainsKey(id))
+            {
+                handlers[id].Invoke(message);
+            }
+        }
 
         public virtual void Subscribe(string msgId, Action<IMessage> handler)
         {

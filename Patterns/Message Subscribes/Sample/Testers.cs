@@ -35,14 +35,5 @@ namespace Sample
             var msg = (message as Msg.TestMessage2);
             Console.WriteLine($"recv TestMessage2 : tester id ({ID}) : msg - {msg.Content}");
         }
-
-        public override void Dispatcher(IMessage message)
-        {
-            var id = message.Descriptor.FullName;
-            if (handlers.ContainsKey(id))
-            {
-                handlers[id].Invoke(message);
-            }
-        }
     }
 }
